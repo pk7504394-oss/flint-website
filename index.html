@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flint | Reimagining Motion & Interaction</title>
+    <meta name="description" content="Experience the cutting-edge interactive scroll animation of Flint. Built with precision, performance, and modern web aesthetics.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS CDN and Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#2b2b2b",
+                    "on-surface": "#f3f3f3",
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#2b2b2b",
+                    "primary": "#d4af37",
+                    "surface-container-low": "#1f1f1f",
+                    "surface-container": "#1a1a1a",
+                    "on-secondary-fixed-variant": "#4a3c00",
+                    "on-tertiary-container": "#a3a3a3",
+                    "inverse-surface": "#f3f3f3",
+                    "on-secondary-container": "#3d3000",
+                    "background": "#121212",
+                    "secondary-fixed-dim": "#b5952f",
+                    "outline": "#737373",
+                    "inverse-primary": "#7a6521",
+                    "secondary-container": "#d4af37",
+                    "on-secondary-fixed": "#1f1800",
+                    "on-surface-variant": "#c2c2c2",
+                    "tertiary": "#a3a3a3",
+                    "on-tertiary-fixed-variant": "#404040",
+                    "surface-dim": "#121212",
+                    "surface-container-highest": "#363636",
+                    "on-background": "#f3f3f3",
+                    "error": "#ffb4ab",
+                    "surface-tint": "#d4af37",
+                    "on-tertiary-fixed": "#171717",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed": "#fae396",
+                    "on-secondary": "#2e2400",
+                    "surface-variant": "#363636",
+                    "on-primary": "#362a00",
+                    "outline-variant": "#525252",
+                    "on-primary-fixed": "#1a1400",
+                    "on-primary-container": "#ffd966",
+                    "primary-container": "#5c4a00",
+                    "tertiary-fixed": "#e5e5e5",
+                    "tertiary-container": "#262626",
+                    "surface-bright": "#404040",
+                    "on-tertiary": "#262626",
+                    "secondary-fixed": "#fae396",
+                    "surface": "#121212",
+                    "surface-container-lowest": "#0a0a0a",
+                    "on-primary-fixed-variant": "#4d3e00",
+                    "tertiary-fixed-dim": "#a3a3a3",
+                    "on-error": "#690005",
+                    "secondary": "#fae396",
+                    "primary-fixed-dim": "#d4af37"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Libre Caslon Text", "serif"
+                    ],
+                    "label-sm": [
+                            "Montserrat", "sans-serif"
+                    ],
+                    "headline-md": [
+                            "Libre Caslon Text", "serif"
+                    ],
+                    "body-lg": [
+                            "Montserrat", "sans-serif"
+                    ],
+                    "display-lg-mobile": [
+                            "Libre Caslon Text", "serif"
+                    ],
+                    "body-md": [
+                            "Montserrat", "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.15em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.03em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Glassmorphic Preloader -->
+    <div id="preloader" class="preloader-overlay">
+        <div class="preloader-content">
+            <div class="preloader-logo">FLINT</div>
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div id="progress-text" class="progress-text">Loading: 0%</div>
+            <div class="loading-subtitle">Initializing fluid motion framework...</div>
+        </div>
+    </div>
+
+    <!-- Transparent Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6" id="navbar">
+        <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center">
+            <a href="#" class="font-display-lg text-headline-md text-on-surface tracking-widest cursor-pointer no-underline">FLINT</a>
+            <div class="hidden md:flex items-center space-x-10 font-label-sm text-[12px] tracking-widest uppercase">
+                <a href="#scroll-animation-container" class="text-on-surface hover:text-primary transition-colors no-underline">Specifications</a>
+                <a href="#stats-bar" class="text-on-surface-variant hover:text-primary transition-colors no-underline">Overview</a>
+                <a href="#products-section" class="text-on-surface-variant hover:text-primary transition-colors no-underline">Products</a>
+                <a href="#3d-viewer" class="text-on-surface-variant hover:text-primary transition-colors no-underline">3D Viewer</a>
+                <a href="#transformation" class="text-on-surface-variant hover:text-primary transition-colors no-underline">Comparison</a>
+                <a href="#contact" class="text-on-surface-variant hover:text-primary transition-colors no-underline">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="bg-primary text-on-primary px-8 py-3 rounded-full font-label-sm text-[12px] hover:scale-105 transition-all duration-300 uppercase tracking-widest border border-primary/20 no-underline">Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main>
+
+        <!-- Scroll Animation Section -->
+        <section class="scroll-section" id="scroll-animation-container">
+            <div class="sticky-wrapper">
+                <!-- Canvas for Frame Drawing -->
+                <canvas id="animation-canvas"></canvas>
+
+                <!-- Floating Text Overlays -->
+                <div class="text-overlay-container">
+                    <div class="text-step" id="step-1">
+                        <span class="step-tag">Structure</span>
+                        <h2 class="step-title">Designed to Move.</h2>
+                        <p class="step-desc">A seamless integration of form, utility, and aerospace ergonomics.</p>
+                    </div>
+                    <div class="text-step" id="step-2">
+                        <span class="step-tag">Durability</span>
+                        <h2 class="step-title">Engineered to Last.</h2>
+                        <p class="step-desc">Forged with ultra-light core elements for absolute structural integrity.</p>
+                    </div>
+                    <div class="text-step" id="step-3">
+                        <span class="step-tag">Dynamics</span>
+                        <h2 class="step-title">Unmatched Precision.</h2>
+                        <p class="step-desc">Dynamic adaptive physics that respond directly to your interactions.</p>
+                    </div>
+                    <div class="text-step" id="step-4">
+                        <span class="step-tag">Evolution</span>
+                        <h2 class="step-title">This is Flint.</h2>
+                        <p class="step-desc">The ultimate leap forward in kinetic performance design.</p>
+                        <div class="step-actions">
+                            <button class="btn btn-primary btn-glow" id="btn-step-action-1">Pre-order Now</button>
+                            <button class="btn btn-secondary" id="btn-step-action-2">Specs Sheet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section id="stats-bar" class="py-20 border-y border-outline-variant/30 bg-surface-container">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div class="flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-surface-container-low hover:-translate-y-3 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                    <span class="material-symbols-outlined text-5xl text-secondary-container">apartment</span>
+                    <div class="space-y-2">
+                        <span class="font-headline-md text-headline-md text-on-surface block tracking-widest">500+</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant uppercase tracking-wider text-sm">Projects Completed</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-surface-container-low hover:-translate-y-3 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] mt-0 md:mt-8">
+                    <span class="material-symbols-outlined text-5xl text-secondary-container">group</span>
+                    <div class="space-y-2">
+                        <span class="font-headline-md text-headline-md text-on-surface block tracking-widest">250+</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant uppercase tracking-wider text-sm">Corporate Clients</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-surface-container-low hover:-translate-y-3 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                    <span class="material-symbols-outlined text-5xl text-secondary-container">account_balance</span>
+                    <div class="space-y-2">
+                        <span class="font-headline-md text-headline-md text-on-surface block tracking-widest">20+</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant uppercase tracking-wider text-sm">Government Organizations</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-surface-container-low hover:-translate-y-3 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,175,55,0.15)] mt-0 md:mt-8">
+                    <span class="material-symbols-outlined text-5xl text-secondary-container">workspace_premium</span>
+                    <div class="space-y-2">
+                        <span class="font-headline-md text-headline-md text-on-surface block tracking-widest">15+</span>
+                        <span class="font-body-md text-body-md text-on-surface-variant uppercase tracking-wider text-sm">Years of Experience</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Categories -->
+        <section id="products-section" class="py-32 bg-background border-t border-outline-variant/30">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                    <!-- Left Side: Illustrative Image -->
+                    <div class="relative group order-2 lg:order-1">
+                        <div class="absolute -inset-8 bg-primary/5 rounded-3xl blur-3xl group-hover:bg-primary/10 transition-all duration-700"></div>
+                        <div class="relative rounded-2xl overflow-hidden border border-primary/20 shadow-2xl">
+                            <img alt="Executive Office Result" class="w-full h-full object-cover aspect-[4/5] group-hover:scale-105 transition-transform duration-1000 mix-blend-luminosity hover:mix-blend-normal opacity-80 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/AP1WRLtXG6HmxxhOw_qu7EUpBAqOLlKmLl6rDupHLtKo04h1YWZFjYNmUarjxoJ9PsnKigXCUycKlKVDHfOVQNshCZIObOrcdFfLyw8UbJP2TBhuNfXDwNbTdFg2ayk0nU_cRJrywOKqVxcxk8anFbdn2IWW8RHRSjsJWCPn9WDrOGDTGwWKIPvvsFJXYTYegayCKlXSd1XhfptEEbSfn2_9U6nlQBgXvp9C1n7K4pGTiPJGNq0z-iZzGFx2FEw"/>
+                        </div>
+                    </div>
+                    <!-- Right Side: Content -->
+                    <div class="space-y-12 order-1 lg:order-2 pl-0 lg:pl-12">
+                        <div>
+                            <span class="font-label-sm text-label-sm text-secondary-container tracking-widest uppercase block mb-6 border-l-2 border-secondary-container pl-4">About Flint</span>
+                            <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-8 uppercase tracking-widest leading-tight">From Concept to Completion</h2>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                                We transform ideas into functional, aesthetic and ergonomic workspaces. Our seamless process ensures quality, efficiency and satisfaction at every step.
+                            </p>
+                        </div>
+                        <!-- Process Grid -->
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="p-6 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:border-secondary-container/50 transition-colors group">
+                                <span class="font-label-sm text-[12px] text-secondary-container block mb-3 opacity-70 group-hover:opacity-100">01</span>
+                                <span class="font-body-md text-on-surface tracking-wider uppercase text-sm">Concept</span>
+                            </div>
+                            <div class="p-6 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:border-secondary-container/50 transition-colors group translate-y-4">
+                                <span class="font-label-sm text-[12px] text-secondary-container block mb-3 opacity-70 group-hover:opacity-100">02</span>
+                                <span class="font-body-md text-on-surface tracking-wider uppercase text-sm">Design</span>
+                            </div>
+                            <div class="p-6 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:border-secondary-container/50 transition-colors group">
+                                <span class="font-label-sm text-[12px] text-secondary-container block mb-3 opacity-70 group-hover:opacity-100">03</span>
+                                <span class="font-body-md text-on-surface tracking-wider uppercase text-sm">Manufacturing</span>
+                            </div>
+                            <div class="p-6 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:border-secondary-container/50 transition-colors group translate-y-4">
+                                <span class="font-label-sm text-[12px] text-secondary-container block mb-3 opacity-70 group-hover:opacity-100">04</span>
+                                <span class="font-body-md text-on-surface tracking-wider uppercase text-sm">Quality Check</span>
+                            </div>
+                            <div class="p-6 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:border-secondary-container/50 transition-colors group">
+                                <span class="font-label-sm text-[12px] text-secondary-container block mb-3 opacity-70 group-hover:opacity-100">05</span>
+                                <span class="font-body-md text-on-surface tracking-wider uppercase text-sm">Installation</span>
+                            </div>
+                            <div class="p-6 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:border-secondary-container/50 transition-colors group translate-y-4">
+                                <span class="font-label-sm text-[12px] text-secondary-container block mb-3 opacity-70 group-hover:opacity-100">06</span>
+                                <span class="font-body-md text-on-surface tracking-wider uppercase text-sm">After Sales</span>
+                            </div>
+                        </div>
+                        <div class="pt-8">
+                            <a class="inline-flex items-center gap-3 font-label-sm text-label-sm text-secondary-container hover:text-primary transition-colors border-b-2 border-secondary-container/30 hover:border-primary pb-2 uppercase tracking-widest" href="#">
+                                Know More About Us <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Product Range -->
+        <section class="py-32 bg-surface-container relative">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTg1LCAxOTksIDIyOCwgMC4wNSkiLz48L3N2Zz4=')] [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+                <div class="mb-20 flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
+                    <span class="font-label-sm text-label-sm text-secondary-container tracking-widest uppercase block mb-2">Our Products</span>
+                    <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase tracking-widest">Explore Our Furniture Range</h2>
+                    <a class="inline-flex items-center gap-3 font-label-sm text-label-sm text-secondary-container hover:text-primary transition-colors border-b-2 border-secondary-container/30 hover:border-primary pb-2 uppercase tracking-widest mt-6" href="#">View All Products <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+                </div>
+                <div class="columns-1 md:columns-2 lg:columns-3 gap-10 space-y-10">
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10">
+                        <div class="w-full aspect-[4/3] mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Modular Workstations" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiaJRBdia7CxO8gQ40Q2tAZ8c75ayKi1-JGeDjIh-regHEiHAWCgbHxOLSEvDYjfb2f3-Z1o7FSUD0-znB1pbrs1EtY2bykwzLCCacVMpbp1Q52zOjgV_VlS30USrWx9rLr3NlpSGrifwN4UNM6KG6VFYlT_YpZ0NEVn5nnNCIlpup0glYicUsKXdBsKdO8mJl1wSnWn2FTfSkEz3dtiV_xLiftzWrgw_VUvoEr_TNNbnaZ6RNvQFV"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">desk</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Modular Workstations</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10 mt-12">
+                        <div class="w-full aspect-square mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Executive Tables" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARMnPvkcPR-2_5eH0c7msutkJ-ognQyp26aICbj2DDEO4MYzxhnRcWe7AwPv9sxDnVhQ8VNUeWmb2QsWJZJo0Fo9g5vIB2iAtHtA1nGrNIBj4RiRP4LTGwL-Vmv1XQ8mEFsLYdtRXxHa28n_dE8MXZ6V___cqi5BLaDxfsuDDockPgnwxoGdJNL1fmSS1SNO8ajTWZWmlSy9hApymTDJ6lxb5hOIX2lrr2C2m7wnQEwjZaMIVzj-Fd"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">table_restaurant</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Executive Tables</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10">
+                        <div class="w-full aspect-[3/4] mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Conference Tables" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl4O2pbkOuPXjwv6JDIAY4g_QOOcxMCXT8nzxi7WIq9CbsauBbWa7k3tvDKeQ9w071cFOCMXBPxQxJFQgsc74foC-R90itE6CbfS39w9sWDJOJtWTOYZ6K04TbNd11YXarUVn4GplAwXepH04EOInxclIReD4Ao6JH0zUapQxioPT6pR36VNNqiPsAk-3gsgzQ_Wh0l0l6k4ghedLXL9gW1VXkwRoh-kOvtfLpb8g-Ech-gYNpe11z"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">groups</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Conference Tables</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10 mt-16">
+                        <div class="w-full aspect-[4/3] mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Office Chairs" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb1TD6JOWxRgJ_ZfveDmb_FaQzlV5oM5xpMnAkPQ7GwDeWTGigycJvwvj5yXrpholpei2PQoEZGTyPPHL0SN_xbeioBOFDQ8YE1mJD4hmBotiyCGHtpYiIXtl3r4L8Hdq7VmbAi1k-xr8V4QrIPkxx7USwjoP4T3jGBk7t6QcBL3VgkztIGMswC9Sb7WZD9-9A-HWS3A3rnptffpsLi5XeCrKJtMTPCH-1CU1olXVHQG5QK2FDHbWi"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">chair</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Office Chairs</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10">
+                        <div class="w-full aspect-[3/2] mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Storage Solutions" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIRY5I534qaNHoL5s3gNDuTmlSxoTyzitaPBjVqmD7yNK-ZKIMw4Rd9JBHoi4taeUbzueKdWm6jlIsLk6ldIlqTZ_vxUaSNXfu5EbeZkMZohA9lgJJ0kgSkBwRiF8m3NskNwUcWJy6UEa2ReB0NyuSbB0_00iBrZNWcOYo2RQbuU5Z3dbuoow7-nLpYqc6yg_CnyMoPasOOZpzLVFVWvHOTLoBkLFZFBfipQXlhKcE5to1ZlaJKUz6"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">inventory_2</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Storage Solutions</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10 mt-8">
+                        <div class="w-full aspect-square mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Cabins &amp; Partitions" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5nEJ3AOenO-F-SyTqK9-UdKxuQt285iMSEKytdxr8idhGAHu9lnehr9Mt-Pqddc6QFPjBT_decjILpS-9ytnfF5iPd1Bgna3SxvqIE9oKI2nF0316WBJqKhtLi-Z5HNqpEQhXUxOUaYV4lpb1pdXpG7cE7HlYe18wcgINaeNOhbh9apOZvvFCrncIdokhiag3fnV6_cXEJfUxuoFAlwkR4aoGbGNnjhm-SVk3Ed2pBxYOAeJbwHc0"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">view_quilt</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Cabins &amp; Partitions</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10">
+                        <div class="w-full aspect-[4/3] mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="Reception Furniture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFQKjOsJSMV-5m7Hh5ipOe8PfI5PI_L4_-ClBlqDJOIxQY-mn42vjDXOlWJmLqQ9NlON2S0I-y5WJbwMEhagMFCnUCn7gZTRtCZt7C20WnObk7chgJboD_IFs7Ud9IjBEXU2IMfnZDzYG1TQRE96PSiROeGgfmGVgR8b5C8IQoD4Rc_Ab2unpMSQFub22cLWcwgq0cgoXe00BqMBe8Vxrg3APvzzyZEHibDxGhcz46koAhSLi2P9bw"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500" data-original-icon="front_desk">circle</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">Reception Furniture</span>
+                    </div>
+                    <div class="break-inside-avoid group flex flex-col items-center justify-center text-center space-y-6 p-10 rounded-2xl border border-primary/20 bg-background/50 backdrop-blur-sm hover:-translate-y-4 duration-500 cursor-pointer hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all mb-10 mt-12">
+                        <div class="w-full aspect-video mb-6 overflow-hidden rounded-xl border border-outline-variant/20">
+                            <img alt="School Furniture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFy3Iodd7C1gjMFyuwFbdBhdlAetGS28B8uYhDTGIH1iHCpgQLbYgLwPqfVJuGLJHYTlUIxqipiSjjT2Ew-gzoe2UHCexFdALuU_UVPkDEaRnxq7KqpCeQfZF4AQW2uKmMXPl4xmeLETAC0nelA2n8grRFPG5w90CQ4adKUcAtPzfOVGF_2q_eYiWiwwk2CByCb3c14pjFeb7tM5xXzfpcN3AT0pia1B1djcru1vMKZGEnqk9d7F_K"/>
+                        </div>
+                        <span class="material-symbols-outlined text-4xl text-secondary-container group-hover:scale-110 transition-transform duration-500">school</span>
+                        <span class="font-label-sm text-[14px] text-on-surface tracking-widest uppercase">School Furniture</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Product Viewer Section -->
+        <section id="3d-viewer" class="py-32 bg-background border-t border-outline-variant/30 relative">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+                <div class="bg-surface-container-low border border-primary/20 rounded-3xl p-10 md:p-20 flex flex-col items-center text-center space-y-12 shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+                    <div class="space-y-6 relative z-10">
+                        <span class="font-label-sm text-label-sm text-secondary-container tracking-widest uppercase block">3D PRODUCT VIEWER</span>
+                        <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface uppercase tracking-widest">Explore in 3D</h2>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Interact with our products in 360°.</p>
+                    </div>
+                    <div class="relative w-full max-w-4xl aspect-[16/7] rounded-2xl overflow-hidden group shadow-2xl border border-outline-variant/20 z-10">
+                        <img alt="3D Product Showcase" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIXRluM-e-HPfQSTiFIfF7-NIWVUJVi2RLOZrWKwvi6NFvSPsHlHtoclkdSh4uf-fDuORF72v062ngvrq1OgW1tN_zvLqUsoXJfhG8g_9LJvr3i2dT1zHOaQ0ckiIo2btayuAf7fTrsDiMcg9r-4yCcLUNkIER-ym0wscp2PqFeB2_XNbV-RxPvcurCduNIxJfHNIcA7y6VLSwnIrQqxzHi4zRK7OeDDnS7jnlh5n44S8GpkxVGNgGx38wEbK12zuJBw"/>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="bg-background/60 backdrop-blur-xl p-6 rounded-full border border-secondary-container/30 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+                                <span class="material-symbols-outlined text-secondary-container text-5xl">360</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center gap-8 z-10">
+                        <div class="flex items-center gap-3 text-secondary-container font-label-sm text-[12px] tracking-widest uppercase">
+                            <span class="material-symbols-outlined">sync</span> 360° INTERACTIVE VIEW
+                        </div>
+                        <button class="border-2 border-secondary-container text-secondary-container px-14 py-5 rounded-full font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-secondary-fixed transition-all duration-500 uppercase tracking-widest shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                            VIEW IN 3D
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Transformation Section -->
+        <section id="transformation" class="py-32 bg-surface border-t border-outline-variant/30">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                    <div class="space-y-12 pr-0 lg:pr-12">
+                        <div>
+                            <span class="font-label-sm text-label-sm text-secondary-container tracking-widest uppercase block mb-6 border-l-2 border-secondary-container pl-4">PROJECT TRANSFORMATION</span>
+                            <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-8 uppercase tracking-widest leading-tight">See the Difference</h2>
+                        </div>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors duration-300">
+                                <span class="material-symbols-outlined text-secondary-container text-2xl mt-1">check_circle</span>
+                                <span class="font-body-md text-on-surface text-lg">Premium Materials</span>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors duration-300">
+                                <span class="material-symbols-outlined text-secondary-container text-2xl mt-1">check_circle</span>
+                                <span class="font-body-md text-on-surface text-lg">Modern &amp; Ergonomic Designs</span>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors duration-300">
+                                <span class="material-symbols-outlined text-secondary-container text-2xl mt-1">check_circle</span>
+                                <span class="font-body-md text-on-surface text-lg">Government Approved Supplier</span>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors duration-300">
+                                <span class="material-symbols-outlined text-secondary-container text-2xl mt-1">check_circle</span>
+                                <span class="font-body-md text-on-surface text-lg">Custom Manufacturing</span>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors duration-300">
+                                <span class="material-symbols-outlined text-secondary-container text-2xl mt-1">check_circle</span>
+                                <span class="font-body-md text-on-surface text-lg">Fast Installation</span>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface-container-low transition-colors duration-300">
+                                <span class="material-symbols-outlined text-secondary-container text-2xl mt-1">check_circle</span>
+                                <span class="font-body-md text-on-surface text-lg">1 Year Warranty &amp; Support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border border-outline-variant/20 shadow-2xl group">
+                        <div class="flex h-full">
+                            <div class="w-1/2 relative overflow-hidden border-r-2 border-secondary-container/50">
+                                <img alt="Before" class="absolute inset-0 w-[200%] h-full object-cover max-w-none opacity-60 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida/AP1WRLtEDqlSkc6SdNrsCHpAwacySqPYEHrS6Q2HNDfnsA1kGN58ku43AIlG6w5WescnNEejGkyt3KjvgNXC2rgpcW5d9LYpobM3jtM3VA6CrhHhxMJveUpYcLTS7VTVBWU09DFj-JmK968DAQUxmeMRg6m3IWvf52ZApjg644BaQ68Y9Dwvtq4GMYKi9EhRLozcQTzbnn4v2h_WWEcqw4_h_itxUf4Z56zitc8m6xWgk5gl-Ea38kZF3kBWPg"/>
+                                <div class="absolute bottom-6 left-6 bg-background/80 backdrop-blur-xl px-4 py-2 rounded-lg text-[11px] font-label-sm text-on-surface tracking-widest uppercase border border-outline-variant/30">BEFORE</div>
+                            </div>
+                            <div class="w-1/2 relative overflow-hidden">
+                                <img alt="After" class="absolute inset-0 w-[200%] h-full object-cover max-w-none -left-full opacity-90" src="https://lh3.googleusercontent.com/aida/AP1WRLtXG6HmxxhOw_qu7EUpBAqOLlKmLl6rDupHLtKo04h1YWZFjYNmUarjxoJ9PsnKigXCUycKlKVDHfOVQNshCZIObOrcdFfLyw8UbJP2TBhuNfXDwNbTdFg2ayk0nU_cRJrywOKqVxcxk8anFbdn2IWW8RHRSjsJWCPn9WDrOGDTGwWKIPvvsFJXYTYegayCKlXSd1XhfptEEbSfn2_9U6nlQBgXvp9C1n7K4pGTiPJGNq0z-iZzGFx2FEw"/>
+                                <div class="absolute bottom-6 right-6 bg-secondary-container/90 px-4 py-2 rounded-lg text-[11px] font-label-sm text-on-secondary-fixed tracking-widest uppercase shadow-lg">AFTER</div>
+                            </div>
+                        </div>
+                        <!-- Slider Handle Simulation -->
+                        <div class="absolute top-0 bottom-0 left-1/2 w-1 bg-secondary-container shadow-[0_0_20px_rgba(212,175,55,0.6)] z-10">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-fixed shadow-[0_0_30px_rgba(212,175,55,0.5)]">
+                                <span class="material-symbols-outlined text-[24px]">unfold_more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get in Touch Section -->
+        <section id="contact" class="py-32 bg-background border-t border-outline-variant/30 relative overflow-hidden">
+            <!-- Decorative abstract shapes -->
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary-container/5 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3 pointer-events-none"></div>
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+                    <div class="space-y-12">
+                        <div>
+                            <span class="font-label-sm text-label-sm text-secondary-container tracking-widest uppercase block mb-6 border-l-2 border-secondary-container pl-4">GET IN TOUCH</span>
+                            <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-8 uppercase tracking-widest leading-tight">Have a requirement?</h2>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+                                Our experts are ready to help you design your ideal workspace.
+                            </p>
+                        </div>
+                        <div class="space-y-10 pt-8 border-t border-outline-variant/20">
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center border border-primary/20 group-hover:border-secondary-container transition-colors duration-300 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                                    <span class="material-symbols-outlined text-secondary-container text-2xl">call</span>
+                                </div>
+                                <div>
+                                    <span class="font-label-sm text-[11px] text-on-surface-variant tracking-widest uppercase block mb-2">PHONE</span>
+                                    <p class="font-body-lg text-on-surface text-xl tracking-wider">87709 13029</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center border border-primary/20 group-hover:border-secondary-container transition-colors duration-300 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                                    <span class="material-symbols-outlined text-secondary-container text-2xl">mail</span>
+                                </div>
+                                <div>
+                                    <span class="font-label-sm text-[11px] text-on-surface-variant tracking-widest uppercase block mb-2">EMAIL</span>
+                                    <p class="font-body-lg text-on-surface text-xl tracking-wider">fkincorporations@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center border border-primary/20 group-hover:border-secondary-container transition-colors duration-300 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                                    <span class="material-symbols-outlined text-secondary-container text-2xl">location_on</span>
+                                </div>
+                                <div>
+                                    <span class="font-label-sm text-[11px] text-on-surface-variant tracking-widest uppercase block mb-2">LOCATION</span>
+                                    <p class="font-body-lg text-on-surface text-xl tracking-wider">Bhopal, Madhya Pradesh, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface/60 backdrop-blur-xl border border-primary/20 p-12 rounded-3xl shadow-2xl relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl pointer-events-none"></div>
+                        <form class="space-y-8 relative z-10">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="space-y-3">
+                                    <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="name">Your Name</label>
+                                    <input class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 placeholder-on-surface-variant/30 font-body-md" id="name" placeholder="John Doe" type="text"/>
+                                </div>
+                                <div class="space-y-3">
+                                    <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="company">Company Name</label>
+                                    <input class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 placeholder-on-surface-variant/30 font-body-md" id="company" placeholder="Acme Corp" type="text"/>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="space-y-3">
+                                    <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="email">Email Address</label>
+                                    <input class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 placeholder-on-surface-variant/30 font-body-md" id="email" placeholder="john@example.com" type="email"/>
+                                </div>
+                                <div class="space-y-3">
+                                    <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="phone">Phone Number</label>
+                                    <input class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 placeholder-on-surface-variant/30 font-body-md" id="phone" placeholder="+91 00000 00000" type="tel"/>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="requirement">Your Requirement</label>
+                                <textarea class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 h-40 resize-none placeholder-on-surface-variant/30 font-body-md" id="requirement" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <button class="w-full bg-primary text-on-primary py-5 rounded-xl font-label-sm text-label-sm hover:bg-primary-fixed transition-all duration-500 uppercase tracking-widest hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] mt-4" type="button">
+                                SEND MESSAGE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-Column Footer -->
+        <footer class="w-full py-24 bg-surface-container border-t border-outline-variant/30">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="space-y-8 lg:col-span-1">
+                    <div class="font-display-lg text-headline-md text-on-surface tracking-widest">FLINT</div>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Shaping Your Vision Into Reality</p>
+                    <p class="font-body-md text-[13px] text-on-surface-variant mt-12 opacity-60">© 2024 F K Incorporation. All Rights Reserved.</p>
+                </div>
+                <div>
+                    <h4 class="font-label-sm text-label-sm text-secondary-container mb-8 uppercase tracking-widest">Quick Links</h4>
+                    <ul class="space-y-5 font-body-md text-body-md">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Home</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">About Us</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Products</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Projects</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-label-sm text-label-sm text-secondary-container mb-8 uppercase tracking-widest">Products</h4>
+                    <ul class="space-y-5 font-body-md text-body-md">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Workstations</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Tables</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Storage</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Chairs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-label-sm text-label-sm text-secondary-container mb-8 uppercase tracking-widest">Support</h4>
+                    <ul class="space-y-5 font-body-md text-body-md">
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Catalogue</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">Warranty</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">After Sales Support</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary transition-all hover:pl-2" href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-label-sm text-label-sm text-secondary-container mb-8 uppercase tracking-widest">Contact Us</h4>
+                    <ul class="space-y-5 font-body-md text-body-md">
+                        <li class="flex items-start gap-4 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[20px] text-primary">call</span>
+                            87709 13029
+                        </li>
+                        <li class="flex items-start gap-4 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[20px] text-primary">mail</span>
+                            fkincorporations@gmail.com
+                        </li>
+                        <li class="flex items-start gap-4 text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[20px] text-primary">location_on</span>
+                            Bhopal, Madhya Pradesh, India
+                        </li>
+                    </ul>
+                    <h4 class="font-label-sm text-label-sm text-secondary-container mt-12 mb-8 uppercase tracking-widest">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-secondary-container hover:border-secondary-container transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]" href="#">
+                            <span class="material-symbols-outlined">link</span> <!-- placeholder for linkedin -->
+                        </a>
+                        <a class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-secondary-container hover:border-secondary-container transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]" href="#">
+                            <span class="material-symbols-outlined">photo_camera</span> <!-- placeholder for instagram -->
+                        </a>
+                        <a class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant hover:text-secondary-container hover:border-secondary-container transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]" href="#">
+                            <span class="material-symbols-outlined">chat</span> <!-- placeholder for whatsapp -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>

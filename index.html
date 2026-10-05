@@ -527,11 +527,14 @@
                     </div>
                     <div class="bg-surface/60 backdrop-blur-xl border border-primary/20 p-12 rounded-3xl shadow-2xl relative">
                         <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl pointer-events-none"></div>
-                        <form class="space-y-8 relative z-10">
+                        <form class="space-y-8 relative z-10" id="appointment-form">
+                            <!-- Feedback alert message -->
+                            <div id="form-feedback" class="hidden p-4 rounded-xl text-center font-body-md text-sm transition-all duration-300"></div>
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div class="space-y-3">
                                     <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="name">Your Name</label>
-                                    <input class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 placeholder-on-surface-variant/30 font-body-md" id="name" placeholder="John Doe" type="text"/>
+                                    <input class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 placeholder-on-surface-variant/30 font-body-md" id="name" placeholder="John Doe" type="text" required/>
                                 </div>
                                 <div class="space-y-3">
                                     <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="company">Company Name</label>
@@ -552,7 +555,7 @@
                                 <label class="font-label-sm text-[11px] tracking-widest uppercase text-on-surface-variant" for="requirement">Your Requirement</label>
                                 <textarea class="w-full bg-background/50 border border-outline-variant/30 rounded-xl px-5 py-4 text-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all duration-300 h-40 resize-none placeholder-on-surface-variant/30 font-body-md" id="requirement" placeholder="Tell us about your project..."></textarea>
                             </div>
-                            <button class="w-full bg-primary text-on-primary py-5 rounded-xl font-label-sm text-label-sm hover:bg-primary-fixed transition-all duration-500 uppercase tracking-widest hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] mt-4" type="button">
+                            <button class="w-full bg-primary text-on-primary py-5 rounded-xl font-label-sm text-label-sm hover:bg-primary-fixed transition-all duration-500 uppercase tracking-widest hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] mt-4 cursor-pointer" type="submit" id="submit-btn">
                                 SEND MESSAGE
                             </button>
                         </form>
@@ -629,6 +632,8 @@
         </footer>
     </main>
 
+    <!-- Supabase JS Client SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <!-- App Script -->
     <script src="app.js"></script>
 </body>
